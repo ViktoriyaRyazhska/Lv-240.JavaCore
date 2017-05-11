@@ -1,0 +1,77 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class PhoneCallsTask3 {
+
+	public static void main(String[] args) throws IOException {
+		    BufferedReader br = new BufferedReader(
+			new InputStreamReader(System.in));
+
+		    System.out.println("What price for phone calls are in Ukraine (dollars per minute)?");
+		    int c1 = Integer.parseInt(br.readLine());
+		    System.out.println("What price for phone calls are in Canada (dollars per minute)?");
+		    int c2 = Integer.parseInt(br.readLine());
+		    System.out.println("What price for phone calls are in German (dollars per minute)?");
+		    int c3 = Integer.parseInt(br.readLine());
+		    System.out.println("For how long did you speak while calling from Ukraine (minutes)");
+		    int t1 = Integer.parseInt(br.readLine());
+		    System.out.println("For how long did you speak while calling from Canada (minutes)");
+		    int t2 = Integer.parseInt(br.readLine());
+		    System.out.println("For how long did you speak while calling from German (minutes)");
+		    int t3 = Integer.parseInt(br.readLine());
+		    System.out.println("So the price for calling from Ukraine is " + (c1*t1) + " dollars");
+		    System.out.println("The price for calling from Canada is " + (c2*t2) + " dollars");
+		    System.out.println("The price for calling from German is " + (c3*t3) + " dollars");
+		    System.out.println("And the overall price for ALL calls is " + (c1*t1+c2*t2+c3*t3) + " dollars");
+	}
+
+}
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+		import java.io.IOException;
+		import java.io.InputStreamReader;
+
+		public class AdressTask2 {
+
+			public static void main(String[] args) throws IOException {
+				    BufferedReader br = new BufferedReader(
+					new InputStreamReader(System.in));
+
+				    System.out.println("What is your name?");
+				    String name = br.readLine();
+				    System.out.println("Where are you living " + name);
+				    String city = br.readLine();
+				    System.out.println("So, " + name + " you live in " + city);  
+				    
+}
+}
+
+
+
+
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class CircleParameter {
+
+	public static void main(String[] args) throws IOException {
+		    BufferedReader br = new BufferedReader(
+			new InputStreamReader(System.in));
+
+		System.out.println("Hello. What is the radius of your flower bad?");
+		int radius = Integer.parseInt(br.readLine());
+		System.out.println("OK. So the Perimeter of your flower bad is - " + (2*3.14*radius));  
+		System.out.println("And Area of your bad is - " + (3.14*(radius*radius)));
+	}
+
+}
