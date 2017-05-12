@@ -12,7 +12,7 @@ public class Person {
 	}
 
 	public Person(String name, int birthYear) {
-		super();
+		
 		this.name = name;
 		this.birthYear = birthYear;
 	}
@@ -43,14 +43,14 @@ public class Person {
 		
 		if (sc.hasNextLine()){
 			String tempName = sc.nextLine();
-			this.setName(tempName);
+			setName(tempName);
 		}
 		
 		System.out.println("Write down the birthYear of a person");
 		if (sc.hasNextInt()){
 			int tempBirthYear = sc.nextInt();
 			if (tempBirthYear <= thisYear)
-			this.setBirthYear(tempBirthYear);
+			setBirthYear(tempBirthYear);
 		} else{
 			System.out.println("You wrote a wrong year, today is " + thisYear);
 		}
@@ -66,7 +66,7 @@ public class Person {
 		Scanner sc = new Scanner(System.in);
 		if (sc.hasNextLine()){
 			String tempName = sc.nextLine();
-			this.setName(tempName);
+			setName(tempName);
 		} else {
 			System.out.println("You wrote a wrong data");
 		}
