@@ -1,11 +1,12 @@
 package week2.hm2_2;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Person {
 	private String name;
 	private int birthYear;
-	static int thisYear = 2017;
+	static int thisYear = LocalDate.now().getYear();
 	
 	public Person() {
 		// TODO Auto-generated constructor stub
@@ -37,8 +38,8 @@ public class Person {
 		return thisYear - this.birthYear;
 	}
 	
-	public void input(){
-		Scanner sc = new Scanner(System.in);
+	public void input(Scanner sc){
+
 		System.out.println("Write down name of a person:");
 		
 		if (sc.hasNextLine()){
@@ -61,9 +62,9 @@ public class Person {
 		return "Person [name=" + name + ", birthYear=" + birthYear + "]";
 	}
 	
-	public void changeName(){
+	public void changeName(Scanner sc){
 		System.out.println("Write down the new Name of a person");
-		Scanner sc = new Scanner(System.in);
+		
 		if (sc.hasNextLine()){
 			String tempName = sc.nextLine();
 			setName(tempName);
