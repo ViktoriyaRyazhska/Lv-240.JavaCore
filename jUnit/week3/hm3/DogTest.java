@@ -17,7 +17,7 @@ public class DogTest {
 		boolean condit = dog1.checkIfTheNameEquals(dog2);
 		
 		assertTrue(condit);
-		
+		assertEquals(dog1.getName(), dog2.getName());
 		
 		
 		//fail("Not yet implemented");
@@ -57,7 +57,7 @@ public class DogTest {
 		
 		int expected = 0;
 		int actual = dog3.checkTheOldestDog(dog4);
-		assertEquals(actual, actual);
+		assertEquals(expected, actual);
 		
 	}
 	
