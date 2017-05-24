@@ -1,0 +1,158 @@
+package HomeWork4;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Task1 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int month_days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+		System.out.println("Please, input number of month");
+		int input = Integer.parseInt(br.readLine());
+
+		System.out.println(month_days[input - 1]);
+
+	}
+
+}
+
+
+////////
+
+package HomeWork4;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Task2 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Please, input any 10 numbers from paragraph");
+		int input = Integer.parseInt(br.readLine());
+		int input2 = Integer.parseInt(br.readLine());
+		int input3 = Integer.parseInt(br.readLine());
+		int input4 = Integer.parseInt(br.readLine());
+		int input5 = Integer.parseInt(br.readLine());
+		int input6 = Integer.parseInt(br.readLine());
+		int input7 = Integer.parseInt(br.readLine());
+		int input8 = Integer.parseInt(br.readLine());
+		int input9 = Integer.parseInt(br.readLine());
+		int input10 = Integer.parseInt(br.readLine());
+
+		int numbers[] = { input, input2, input3, input4, input5, input6, input7, input8, input9, input10 };
+
+		int sum = 0;
+		int positive = 0;
+		int product = 1;
+
+		for (int i = 0; i < 5; i++) {
+			if (numbers[i] > 0) {
+				positive++;
+			}
+		}
+		if (positive == 5) {
+			for (int i = 0; i < 5; i++) {
+				sum = sum + numbers[i];
+			}
+			System.out.println("The sum of the first 5 numbers is " + sum);
+		} else {
+			for (int i = 5; i < numbers.length; i++) {
+				product = product * numbers[i];
+			}
+			System.out.println("The product of the last 5 numbers is " + product);
+		}
+		}}
+
+/////////////
+
+package HomeWork4;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Task3 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Please, input any 5 numbers from paragraph");
+		int input = Integer.parseInt(br.readLine());
+		int input2 = Integer.parseInt(br.readLine());
+		int input3 = Integer.parseInt(br.readLine());
+		int input4 = Integer.parseInt(br.readLine());
+		int input5 = Integer.parseInt(br.readLine());
+		
+		int numbers[] = { input, input2, input3, input4, input5 };
+
+		int min = numbers[0];
+		int positive = 0;
+		int n = 0;
+
+		for (int i = 0; i < numbers.length; i++) {
+			if (numbers[i] < min) {
+				min = numbers[i];
+				n = i;
+			}
+			if (numbers[i] > 0) {
+				positive++;
+			}
+			if (positive == 2) {
+				System.out.println("The second positive number is on " + (i + 1) + " position");
+				positive++;
+			}
+		}
+		if (positive < 2) {
+			System.out.println("There are only one or no positive numbers");
+		}
+		System.out.println(
+				"Minimum number is " + min + " and it is on the " + (n + 1) + " position.");
+	}
+
+}
+
+
+//////////////////
+
+package HomeWork4;
+
+import java.util.Scanner;
+
+public class Task4 {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		int n = 0;
+		int product = 1;
+
+		do {
+			System.out.println("Please enter any number");
+			n = Integer.parseInt(sc.nextLine());
+			if (n < 0) {
+				System.out.println("Negative number " + n + " was entered");
+				break;
+			} else {
+				if (n % 2 == 0) {
+					product = product * n;
+				}
+			}
+		} while (n >= 0);
+
+		if (product > 1) {
+			System.out.println("The product of all even numbers that were entered is " + product);
+		} else {
+			System.out.println("No positive even numbers were entered");
+		}
+		sc.close();
+	}
+
+}
