@@ -1,0 +1,144 @@
+package HomeWork5;
+
+public interface task2 {
+
+	public double calculatePay();
+
+}
+/////////////////////////////
+
+package HomeWork5;
+
+abstract public class Employee implements task2 {
+	public static int employeeId = 1;
+	private String employeeName;
+
+	public String getEmployeeName() {
+		return employeeName;
+
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public int getEmployeeId() {
+		return employeeId++;
+	}
+
+	Employee(String employeeName) {
+		this.employeeName = employeeName;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Employee ID = " + getEmployeeId() + ", Employee Name = " + employeeName + " Average monthly Payment = "
+				+ calculatePay() + " Euro";
+
+	}
+
+}
+
+////////////////////////////////////////
+
+package HomeWork5;
+
+public class SalariedEmployee extends Employee implements task2 {
+
+	private double hoursOfWork;
+	private int socialSecurityNumber;
+	private double hourly_rate;
+
+	public SalariedEmployee(String employeeName, double hoursOfWork, double hourly_rate, int socialSecurityNumber) {
+		super(employeeName);
+		this.hoursOfWork = hoursOfWork;
+		this.hourly_rate = hourly_rate;
+		this.socialSecurityNumber = socialSecurityNumber;
+	}
+
+	public Integer getSocialSecurityNumber() {
+		return socialSecurityNumber;
+	}
+
+	public void setSocialSecurityNumber(int socialSecurityNumber) {
+		this.socialSecurityNumber = socialSecurityNumber;
+	}
+
+	@Override
+	public double calculatePay() {
+		return hoursOfWork * hourly_rate;
+	}
+}
+
+/////////////////////////////////////////////////
+
+package HomeWork5;
+
+public class ContractEmployee extends Employee implements task2 {
+
+	private double monthly_payment;
+	private int federalTaxIdmember;
+
+	public ContractEmployee(String employeeName, double monthly_payment, int federalTaxIdmember) {
+		super(employeeName);
+		this.monthly_payment = monthly_payment;
+		this.federalTaxIdmember = federalTaxIdmember;
+	}
+
+	@Override
+	public double calculatePay() {
+		return monthly_payment;
+
+	}
+
+	public int getFederalTaxIdmember() {
+		return federalTaxIdmember;
+	}
+
+	public void setFederalTaxIdmember(int federalTaxIdmember) {
+		this.federalTaxIdmember = federalTaxIdmember;
+	}
+
+	public double getMonthly_payment() {
+		return monthly_payment;
+	}
+
+	public void setMonthly_payment(double monthly_payment) {
+		this.monthly_payment = monthly_payment;
+	}
+
+}
+
+///////////////////////////////////////////////////
+
+package HomeWork5;
+
+public class Main_E {
+
+	public static void main(String[] args) {
+		Employee[] emp = new Employee[4];
+		emp[0] = new SalariedEmployee("Taras", 42.5, 8.2, 658);
+		emp[1] = new ContractEmployee("Rostyk", 1200, 323323333);
+		emp[2] = new SalariedEmployee("Jarema", 55.3, 10.2, 168);
+		emp[3] = new ContractEmployee("Anna", 1800, 2325422);
+
+		for (int i = 0; i < emp.length - 1; i++) {
+			for (int j = i + 1; j < emp.length; j++) {
+				if (emp[i].calculatePay() < emp[j].calculatePay()) {
+					Employee tmp;
+					tmp = emp[i];
+					emp[i] = emp[j];
+					emp[j] = tmp;
+
+				}
+			}
+		}
+
+		for (int i = 0; i < emp.length; i++) {
+			System.out.println(emp[i]);
+		}
+
+	}
+
+}

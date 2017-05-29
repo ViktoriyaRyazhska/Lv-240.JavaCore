@@ -1,0 +1,147 @@
+package HomeWork5;
+
+public abstract class Bird {
+
+	private boolean feathers;
+	private boolean layEggs;
+
+	abstract void fly();
+
+	public boolean getFeathers() {
+		return feathers;
+	}
+
+	public void setFeathers(boolean feathers) {
+		this.feathers = feathers;
+	}
+
+	public boolean getLayEggs() {
+		return layEggs;
+	}
+
+	public void setLayEggs(boolean layEggs) {
+		this.layEggs = layEggs;
+	}
+
+	public Bird(boolean feathers, boolean layEggs) {
+		this.feathers = feathers;
+		this.layEggs = layEggs;
+
+	}
+}
+
+
+//////////////////////////////////////
+package HomeWork5;
+
+public class NonFlyingBird extends Bird{
+
+	public NonFlyingBird(boolean feathers, boolean layEggs) {
+		super(feathers, layEggs);
+			}
+
+	@Override
+	   public void fly( ) {
+	       System.out.println("This bird CAN'T fly");
+	     
+	}
+	
+}
+
+////////////////////////////////////////
+package HomeWork5;
+
+public class FlyingBird extends Bird {
+
+	public FlyingBird(boolean feathers, boolean layEggs) {
+		super(feathers, layEggs);
+		
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("This is a Flying bird");
+
+	}
+
+}
+////////////////////////////////////////
+package HomeWork5;
+
+public class Eagle extends FlyingBird {
+
+	public Eagle(boolean feathers, boolean layEggs) {
+		super(feathers, layEggs);
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("EAGLE is a FLYING bird");
+
+	}
+}
+////////////////////////////////////////////
+package HomeWork5;
+
+public class Swallow extends FlyingBird {
+
+	public Swallow(boolean feathers, boolean layEggs) {
+		super(feathers, layEggs);
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("SWALLOW is a FLYING bird");
+	}
+}
+//////////////////////////////////////////
+package HomeWork5;
+
+public class Penguin extends NonFlyingBird {
+
+	public Penguin(boolean feathers, boolean layEggs) {
+		super(feathers, layEggs);
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("PENGUIN is NOT a FLYING bird");
+	}
+}
+///////////////////////////////////////
+package HomeWork5;
+
+public class Chicken extends NonFlyingBird {
+
+	public Chicken(boolean feathers, boolean layEggs) {
+		super(feathers, layEggs);
+
+	}
+
+	@Override
+	public void fly() {
+		System.out.println("CHIKEN is NOT a FLYING bird");
+	}
+}
+//////////////////////////////////////
+package HomeWork5;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Bird[] b = new Bird[4];
+		b[0] = new Eagle(true, true);
+		b[1] = new Swallow(true, true);
+		b[2] = new Penguin(false, true);
+		b[3] = new Chicken(true, true);
+
+		for (int i = 0; i < b.length; i++) {
+			b[i].fly();
+			System.out.println(
+					"It has feathers: " + b[i].getFeathers() + "; " + " and it lays Eggs: " + b[i].getLayEggs());
+		}
+
+	}
+
+}
