@@ -1,0 +1,36 @@
+package HomeWork6;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+
+		Set<String> set1 = new HashSet<String>();
+		set1.add("One");
+		set1.add("Two");
+		set1.add("Three");
+
+		Set<String> set2 = new HashSet<String>();
+		set2.add("Four");
+		set2.add("Five");
+		set2.add("Two");
+
+		union(set1, set2);
+		intersect(set1, set2);
+	}
+
+	public static void union(Set<String> set1, Set<String> set2) {
+		Set<String> union = new HashSet<String>(set1);
+		union.addAll(set2);
+		System.out.println("After union we have " + union);
+	}
+
+	public static void intersect(Set<String> set1, Set<String> set2) {
+		Set<String> intersect = new HashSet<String>(set1);
+		intersect.retainAll(set2);
+		System.out.println("Intersection was with " + intersect);
+	}
+
+}
