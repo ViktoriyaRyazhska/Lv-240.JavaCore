@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class HomeWork_n3 {
 
@@ -46,7 +47,14 @@ public class HomeWork_n3 {
 			System.out.println(student);
 		}
 		
+		// testing printStudent method
+		System.out.println("Write down a number of the group you want to know what students are learning there");
+		Scanner sc = new Scanner(System.in);
+		Integer integ = sc.nextInt();
 		
+		Student studentTest = new Student();
+		
+		studentTest.printStudents(studentsList, integ);
 		
 	}
 	
