@@ -1,0 +1,82 @@
+package HomeWork7;
+
+import java.util.Scanner;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please, input any five words in a row");
+		String words = sc.nextLine();
+		String[] arr = words.split(" ");
+		int maxlength = arr[0].length();
+		int imax = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i].length() > maxlength) {
+				maxlength = arr[i].length();
+				imax = i;
+			}
+		}
+		System.out.println("The longest word from those you have entered is - " + arr[imax]);
+		System.out.println("It consist of - " + maxlength + " letters");
+		StringBuilder sb = new StringBuilder(arr[1]);
+		sb.reverse();
+		System.out.println("Second word in reverse is - " + sb);
+	}
+}
+//////////////////////////////////////////
+
+package HomeWork7;
+
+import java.util.Scanner;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please, input any sentence with different amount of spaces between words");
+		String sentence = sc.nextLine();
+		sentence = sentence.trim();
+		int count = 0;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < sentence.length(); i++) {
+			char next = sentence.charAt(i);
+			if (next == ' ') {
+				count++;
+			} else {
+				count = 0;
+			}
+			if (count <= 1) {
+				sb.append(next);
+			}
+		}
+		System.out.println("Entered sentence should look like - " + sb);
+		sc.close();
+	}
+}
+
+////////////////////////////////////////////
+
+package HomeWork7;
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Task3 {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Please,input several numbers of any amount with US currency in front and two digits after dot");
+		String str = s.nextLine();
+		String patern = "\\${1}(\\d+)\\.\\d{2}";
+		Pattern p = Pattern.compile(patern);
+		Matcher m = p.matcher(str);
+		while (m.find()) {
+			System.out.println(str.substring(m.start(), m.end()) + " is one of the occurances of US currency");
+		}
+		s.close();
+	}
+}
