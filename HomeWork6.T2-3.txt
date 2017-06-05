@@ -1,0 +1,160 @@
+package HomeWork6;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class Task2 {
+	public static void main(String[] args) {
+
+		Map<String, String> personMap = new HashMap<>();
+		personMap.put("Diakiv", "Rostyk");
+		personMap.put("Zadorogna", "Mariana");
+		personMap.put("Kurulchyk", "Orest");
+		personMap.put("Zahray", "Solomia");
+		personMap.put("Hrondzal", "Oksana");
+		personMap.put("Zaletskij", "Igor");
+		personMap.put("Bacuk", "Nazar");
+		personMap.put("Batiuk", "Yliana");
+		personMap.put("Liashok", "Slavko");
+		personMap.put("Vavruchyk", "Nazar");
+		System.out.println("List of persons: ");
+		for (Map.Entry<String, String> entry : personMap.entrySet()) {
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+		System.out.println();
+		int sameName = 0;
+		for (Map.Entry<String, String> entry : personMap.entrySet()) {
+			for (Map.Entry<String, String> entry2 : personMap.entrySet()) {
+				if ((entry.getValue() == entry2.getValue()) && (entry.getKey() != entry2.getKey())) {
+					sameName++;
+				}
+			}
+		}
+		if (sameName > 0) {
+			System.out.println("There are minimum two persons with the same First Name");
+		} else
+			System.out.println("There is no persons with the same First Name");
+		System.out.println();
+
+		Iterator<Map.Entry<String, String>> i = personMap.entrySet().iterator();
+		while (i.hasNext()) {
+			Map.Entry<String, String> entry = i.next();
+			if (entry.getValue() == "Orest") {
+				i.remove();
+				System.out.println("Person with the First Name - Orest was removed from the list ");
+				System.out.println();
+			}
+					}
+		System.out.println("New list of persons is: ");
+		for (Map.Entry<String, String> entry : personMap.entrySet()) {
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+	}
+}
+
+
+///////////////////////////////////////////////////////
+
+package HomeWork6;
+
+import java.util.Comparator;
+
+public class Student {
+
+	    private String Lastname;
+	    private int course;
+
+	    public String getLastname() {
+		return Lastname;
+	    }
+
+	    public void setName(String Surname) {
+		this.Lastname = Lastname;
+	    }
+
+	    public int getCourse() {
+		return course;
+	    }
+
+	    public void setCourse(int course) {
+		this.course = course;
+	    }
+	    public Student() {
+		 	}
+
+	    public Student(String Lastname, int course) {
+		this.Lastname = Lastname;
+		this.course = course;
+	    }
+
+	    @Override
+	    public String toString() {
+		return "Student [Surname is " + Lastname + ", course is " + course + "]";
+	    }
+
+	    static class NameComparator implements Comparator {
+		public int compare(Object o1, Object o2) {
+		    return ((Student) o1).Lastname.compareTo(((Student) o2).Lastname);
+		}
+	    }
+
+	    static class CourseComparator implements Comparator {
+		public int compare(Object o1, Object o2) {
+		    return ((Student) o1).getCourse() - ((Student) o2).getCourse();
+		}
+	    }
+
+	    static NameComparator nameComparator = new NameComparator();
+
+	    static CourseComparator courseComparator = new CourseComparator();
+
+	    public static Comparator getNameComparator() {
+		return nameComparator;
+	    }
+
+	    public static Comparator getCourseComparator() {
+		return courseComparator;
+	    }
+}
+
+
+
+///////////////////////////////////////////////////////////////////
+
+package HomeWork6;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class StudentMain {
+
+			public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Please, enter any number of students course -");
+			int number = sc.nextInt();
+
+			ArrayList<Student> students = new ArrayList<Student>();
+			students.add(new Student("Savula", 1));
+			students.add(new Student("Pihotina", 1));
+			students.add(new Student("Bacuk", 3));
+			students.add(new Student("Zahray", 3));
+			students.add(new Student("Tymush", 5));
+
+			Iterator<Student> iterator = students.iterator();
+			Student student = new Student();
+			while (iterator.hasNext()) {
+			    student = iterator.next();
+			    if (student.getCourse() == number) {
+				System.out.println("Student " + student.getLastname() + " is studing in this course.");
+			    }
+			}
+			
+			students.sort(Student.getCourseComparator());
+			System.out.println(students);
+			students.sort(Student.getNameComparator());
+			System.out.println(students);
+
+		    }
+		}
