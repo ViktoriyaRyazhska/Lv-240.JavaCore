@@ -17,7 +17,7 @@ public class Lesson9Practical {
 	
 	public static void main(String[] args) {
 		
-		
+		//task 1
 		Scanner scanner = new Scanner(System.in);
 		
 		try {
@@ -36,7 +36,21 @@ public class Lesson9Practical {
 		}
 		
 		System.out.println("Finished");
+	
+		
+		//task2
+		try {
+			Plant plant = new Plant(2, "BLUE", "long");
+			System.out.println(plant);
+		} catch (ColorException | TypeException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
+	
+	
 	
 }
