@@ -1,0 +1,87 @@
+package HomeWork8;
+
+import java.util.Scanner;
+
+public class Task1 {
+
+	public static double div(double a, double b) throws ArithmeticException {
+		if (b == 0) {
+			throw new ArithmeticException("You cannot divide by zero");
+		} else {
+			return a / b;
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please, input any two double numbers");
+		try {
+			double a = Double.parseDouble(sc.next());
+			double b = Double.parseDouble(sc.next());
+			System.out.println(div(a, b));
+		} catch (NumberFormatException e) {
+			System.err.println("Entered data should be a number");
+		} catch (ArithmeticException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+}
+
+
+
+/////////////////////////////////////////////
+
+
+package HomeWork8;
+
+@SuppressWarnings("serial")
+public class MyException extends Exception {
+	public MyException(String msg) {
+		super(msg);
+	}
+}
+
+///////////////////////////
+
+package HomeWork8;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Task2 {
+
+	public static int readNumber(int start, int end) throws MyException {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Please, enter any number");
+		int number = 0;
+		try {
+			number = s.nextInt();
+
+		} catch (InputMismatchException e) {
+			System.err.println("You must enter only a numbers");
+		}
+
+		if ((number > start) && (number < end)) {
+			System.out.println("Below is a number you entered");
+			return number;
+		} else {
+			throw new MyException(
+					number + " is the number you entered and it is not in range [" + start + "-" + end + "]");
+		}
+	}
+
+	public static void main(String[] args) {
+		int count = 10;
+		for (int i = 0; i < count; i++) {
+
+			try {
+				System.out.println(readNumber(0, 100));
+			} catch (MyException e) {
+				System.err.println(e.getMessage());
+			}
+
+		}
+	}
+
+}
