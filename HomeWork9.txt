@@ -1,0 +1,164 @@
+package HomeWork9;
+
+	class MyThread extends Thread {
+	    String message;
+	    int pause;
+
+	    public MyThread(String message, int pause) {
+		this.message = message;
+		this.pause = pause;
+	    }
+	    @Override
+	    public void run() {
+		for (int i = 0; i < 5; i++) {
+		    System.out.println(message);
+		    try {
+			Thread.sleep(pause);
+		    } catch (InterruptedException e) {
+			e.printStackTrace();
+		    }
+		}
+	    }
+	}
+
+///////////////////////
+
+	public class Task1 {
+
+	    public static void main(String[] args) throws InterruptedException {
+
+		MyThread t1 = new MyThread("Thread 1", 1000);
+		MyThread t2 = new MyThread("Thread 2", 2000);
+
+		t1.start();
+		t2.start();
+		try {
+			t1.join();
+			t2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Thread 3(main) in progress");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+
+//////////////////////////////////
+
+
+package HomeWork9;
+
+public class Task2_0 {
+	public final static Object first = new Object();
+	public final static Object second = new Object();
+
+	public static void main(String s[]) {
+		@SuppressWarnings("unused")
+		Thread t1 = new Thread() {
+
+			public void run() {
+				System.out.println("First!");
+				synchronized (first) {
+
+					Thread.yield();
+					synchronized (second) {
+						System.out.println("Success!");
+					}
+				}
+			}
+		};
+	}
+}
+
+///////////////////////////////////
+
+
+package HomeWork9;
+
+public class Task3 {
+
+	public static void main(String[] args) {
+		MyThread2 one = new MyThread2();
+		one.start();
+	}
+}
+
+class MyThread2 extends Thread {
+
+	public void run() {
+		Thread two = new Thread() {
+			public void run() {
+				for (int i = 0; i < 3; i++) {
+					System.out.println("Thread number two");
+				}
+				Thread three = new Thread() {
+					public void run() {
+						for (int i = 0; i < 5; i++) {
+							System.out.println("Thread number three");
+						}
+					}
+				};
+				three.start();
+			}
+		};
+		two.start();
+	}
+}
+
+
+//////////////////////////////////////
+
+package HomeWork9;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Task4 {
+
+    public static void main(String[] args) throws IOException {
+	String source = "file1.txt";
+	String newFile = "file2.txt";
+	String str;
+	int count = 1;
+
+	
+	    String longestLine = (new char[1]).toString();
+	    String name = (new char[1]).toString();
+	    String dayOfBirth = (new char[1]).toString();
+	    FileReader fr = new FileReader("D:\\Java_Workspace\\FirstProject\\src\\HomeWork9\\" + source);
+	    FileWriter fw = new FileWriter("D:\\Java_Workspace\\FirstProject\\src\\HomeWork9\\" + newFile);
+	    BufferedReader br = new BufferedReader(fr);
+	    BufferedWriter bw = new BufferedWriter(fw);
+
+	    while ((str = br.readLine()) != null) {
+		System.out.println("Line " + count + " has " + str.length() + " characters " + str);
+		count++;
+		if (str.contains("Date of birth")) {
+		    name = str;
+		}
+		if (str.contains("Name")){
+			dayOfBirth = str;
+		}
+		if (str.length() > longestLine.length()) {
+		    longestLine = str;
+		}
+	    }
+	    bw.write("Number of lines = " + count);
+	    bw.write(longestLine);;
+	    bw.write(name);
+
+    }
+
+}
