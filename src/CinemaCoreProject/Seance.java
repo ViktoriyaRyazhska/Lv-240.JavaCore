@@ -1,4 +1,4 @@
-package pack;
+package CinemaCoreProject;
 
 public class Seance implements Comparable<Seance>{
 

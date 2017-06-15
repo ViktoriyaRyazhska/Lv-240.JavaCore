@@ -1,4 +1,4 @@
-package pack;
+package CinemaCoreProject;
 
 import java.util.Iterator;
 import java.util.Set;

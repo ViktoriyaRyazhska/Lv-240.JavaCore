@@ -1,4 +1,4 @@
-package pack;
+package CinemaCoreProject;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

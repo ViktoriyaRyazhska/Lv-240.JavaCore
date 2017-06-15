@@ -1,4 +1,4 @@
-package pack;
+package CinemaCoreProject;
 
 public class Demo {
 	
