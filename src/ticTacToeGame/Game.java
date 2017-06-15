@@ -11,7 +11,7 @@ public class Game {
 		Referee referee = new Referee();
 
 		Player player1 = new Player(ActionFigure.CROSS, PlayerType.COMPUTER);
-		Player player2 = new Player(ActionFigure.NOUGHT, PlayerType.HUMAN);
+		Player player2 = new Player(ActionFigure.NOUGHT, PlayerType.COMPUTER);
 
 		Board board = new Board();
 		System.out.println(board.getBoardTable().length);

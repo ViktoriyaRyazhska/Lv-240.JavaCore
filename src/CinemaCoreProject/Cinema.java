@@ -188,6 +188,7 @@ public class Cinema {
 		System.out.println(
 				"Write down a Starting time for the film in such format like '00:00', where firts two zeros "
 						+ "shows hours, and next two zeros after sign ':' shows minutes in 24 hours day");
+		System.out.println("Remember that Cinema works from " + this.open + " to " + this.close);
 		String startingTime = inputLine();
 		
 		String delimiter = ":";
